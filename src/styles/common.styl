@@ -1,0 +1,154 @@
+.log-container
+    position relative
+    width 430px
+    height 532px
+    border 1px solid #D2D1CF
+    border-radius   4px
+    padding 20px 24px 20px 30px
+    display flex
+    flex-direction column
+    align-items center
+    margin 0 auto
+.logo
+    height 32px
+    width 115px
+    background-image url('./assets/logo.svg')
+    background-position center 
+    background-repeat no-repeat
+    padding-top 22px
+.title
+    font-size 16px
+    line-height 21px
+    font-family 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-weight bold
+    padding 10px 0 8px 0
+.inputs-container
+    width 330px
+    .input-container
+        margin 5px 0 0px 0
+.sub-input-container
+    display flex
+    justify-content space-between
+    .input-container
+        width 49%
+        input
+            width 85%
+.input-container
+    display flex
+    flex-direction column
+    width 100%
+    margin 16px 0 20px 0
+    .input-label
+        font-size 14px
+        line-height 19px
+        font-family 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        margin-bottom 3px
+        font-weight bold
+    .input
+        display flex
+        height 36px
+        width 100%
+        border 1px solid #6D6E71
+        box-sizing border-box
+        border-radius 4px
+        margin-bottom 16px
+        input
+            margin-left 10px
+            height 95%
+            width 90%
+            border none
+            outline none
+            background-color white
+        
+        .password
+            width 83%
+        .hide
+            margin auto
+            height 20px
+            width 20px
+            background-image url('./assets/iconHidePassword.svg')
+        .show
+            margin auto
+            height 20px
+            width 20px
+            background-image url('./assets/iconShowPassword.svg')
+
+    select
+        padding-left 10px 
+        height 36px
+        width 93%
+        outline none
+        border 1px solid #6D6E71
+        box-sizing border-box
+        border-radius 4px
+    .gender-selector select 
+        padding 5px 8px
+        width 130%
+        border none
+        box-shadow none
+        background transparent
+        background-image none
+        -webkit-appearance none
+    
+
+    .gender-selector select:focus 
+        outline none
+    
+
+.signup
+    position absolute
+    bottom 35px
+
+.action-btn
+    text-align center
+    width 320px
+    height 36px
+    background-color #48bff7
+    border none 
+    border-radius 99px
+    color white
+    font-size 14px
+    line-height 36px
+    margin 24px
+    cursor pointer
+
+.error
+    border 1px solid #FF5A5F!important
+
+.error-text
+    color #B92000
+    font-size 12px
+    line-height 11px
+    margin-top  -10px
+    margin-bottom 10px
+
+input:-webkit-autofill
+    background-color none 
+    -webkit-box-shadow 0 0 0 30px white inset !important
+
+.profile-pic
+    width 40px
+    height 40px
+    background-color #512da8
+    border-radius 50%
+    text-align center
+    line-height 35px
+    font-size 20px
+    color white
+    font-family 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
+.name
+    font-size 14px
+    margin-left 10px
+    line-height 40px
+    flex 1 1 auto
+
+.right-box
+    margin 0 auto
+    display flex
+    flex-direction column
+    align-items center
+
+.disabled
+    background-color transparent
+    color black

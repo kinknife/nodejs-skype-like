@@ -1,0 +1,61 @@
+.side-bar
+    width 300px
+    border-right 1px solid #bdbdbd
+    height 100%
+    .user-section
+        display flex
+        padding 15px
+        .logout
+            background-image url('./assets/signout.svg');
+            background-repeat no-repeat
+            background-position right center
+            background-size 25px
+            height 40px
+            width 40px
+            cursor pointer
+    .search
+        display flex
+        border 1px solid #bdbdbd
+        border-radius 4px
+        height 30px
+        width 93%
+        margin 0 auto
+        .search-icon
+            background-image url('./assets/search.svg')
+            background-repeat no-repeat
+            background-size 20px 100%
+            width 40px
+            height 100%
+            background-position center
+            cursor pointer
+        input 
+            outline none
+            border none
+            width 83%
+    .tab-header
+        display flex
+        padding 30px 0 10px
+        border-bottom 1px solid #bdbdbd
+        .tab
+            display flex
+            flex-direction column
+            justify-content center
+            align-items center
+            width 100%
+            cursor pointer
+            .icons
+                height 30px
+                width 30px
+                background-repeat no-repeat
+                background-size 100%
+                background-position center
+            .chats
+                background-image url('./assets/chat.svg')
+            .contacts
+                background-image url('./assets/contacts.svg')
+            .info-icon
+                background-image url('./assets/info.svg')
+    .tab-content
+        padding-top 10px
+        .tab-title
+            padding 0 10px 10px

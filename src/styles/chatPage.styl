@@ -1,0 +1,178 @@
+.chat-page
+    height 100%
+    width 100%
+    .top-bar
+        width 100%
+        display flex
+        justify-content space-between
+        align-content center
+        padding 20px 0
+        border-bottom 1px solid #bdbdbd
+        .left-column
+            margin-left 20px
+            .name
+                font-size 30px
+                font-weight bold
+                margin-left 0
+                margin-bottom 5px
+            .bottom-control
+                font-size 16px
+                display flex
+                justify-items center
+                align-items center
+                .online
+                    border-radius 50%
+                    height 5px
+                    width 5px
+                    background-color #42B713
+                .sep
+                    border-right 2px solid #D2D1CF
+                    width 0px
+                    height 20px
+                    margin 0 5px 
+                .search-icon
+                    background-image url('./assets/search.svg');
+                    background-repeat no-repeat
+                    width 100%
+                    background-size 15px 17px
+                    background-position left center
+                    padding-left 20px
+                    line-height 20px
+        .right-column
+            margin-right 20px
+            display flex
+            align-items center
+            .chat-ctl-btn
+                border none
+                background-color transparent
+                border-radius 50%
+                background-size 30px 30px
+                width 60px
+                height 60px
+                margin 0 10px
+                background-repeat no-repeat
+                background-position center
+                outline none 
+                cursor pointer
+            .voice-chat
+                background-image url('./assets/voiceCall.svg');
+            .video-chat
+                background-image url('./assets/videoCall.svg');
+            .add-to-group
+                background-image url('./assets/addToGroup.svg');
+    .chat-box
+        height 100%
+        width 100%
+        display flex
+        flex-direction column
+        padding 30px 0 30px
+        align-items center
+        .new-contact
+            display flex
+            flex-direction column
+            width 100%
+            align-items center
+            .profile-pic
+                height 80px
+                width 80px
+                font-size 40px
+                line-height 75px
+                margin-right 20px
+            .user-info
+                display flex
+                font-size 18px
+                justify-content center
+                align-items center
+                .user-name
+                    font-weight bold
+                    margin-bottom 10px
+                .email
+                    background-image url('./assets/email.svg');
+                    background-repeat no-repeat
+                    padding-left 25px
+                    background-size 20px
+                    background-position left center
+                .mutual-friend
+                    background-image url('./assets/friend.svg');
+                    background-repeat no-repeat
+                    padding-left 25px
+                    background-size 20px
+                    background-position left center
+                    cursor pointer
+        .add-contact
+            border-radius 99px
+            font-size 18px
+            line-height 35px
+            width 220px
+        .invitation
+            display flex
+            flex-direction column
+            justify-content center
+            align-items center
+            width 30%
+            .invitation-title
+                font-size 18px
+            .bottom-control
+                display flex
+                width 100%
+                .action-btn
+                    width 90%
+        .messages
+            height 100%
+            width 45%
+            margin-left -40px
+            display flex
+            flex-direction column
+            justify-content flex-end
+            margin-bottom 40px
+            .chat
+                border-radius 20px
+                max-width 50%
+                font-size 16px
+                padding 10px 15px
+                display inline-block
+                word-break break-all
+            .self
+                background-color #adfcff
+                color white
+                align-self flex-end
+            .other-chat
+                display flex
+                .other
+                    background-color #f1f0f0
+                    margin-left 10px
+        .input
+            display table
+            width 40%
+            height 40px
+            border 1px solid #D2D1CF
+            border-radius 99px
+            padding 5px 5px 5px 20px
+            div
+                display table-cell
+                width 100%
+                outline none
+                border none
+                font-size 14px
+                line-height 20px
+                vertical-align middle
+                word-break break-all
+                white-space pre-line
+                cursor text
+            [contenteditable=true]:empty:not(:focus):before
+                color #757575
+                content attr(placeholder)
+            .send-btn
+                height 100%
+                width 40px
+                border-radius 50%
+                border none
+                margin 0
+                background-color transparent
+                background-image url('./assets/send.svg');
+                background-repeat no-repeat
+                background-size 25px
+                background-position center
+            @-moz-document url-prefix()
+                .send-btn
+                    height 40px

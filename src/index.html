@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="/">
+    <title>Graduation Project</title>
+	<% if(htmlWebpackPlugin.options.ENV === 'production') { %>
+	<link rel="stylesheet" href="./index.css"/>
+	<% } %>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="./bundle.js"></script>
+</html>
