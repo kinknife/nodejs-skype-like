@@ -1,4 +1,6 @@
 .chat-page
+    display flex
+    flex-direction column
     height 100%
     width 100%
     .top-bar
@@ -67,7 +69,9 @@
         flex-direction column
         padding 30px 0 30px
         align-items center
+        position relative
         .new-contact
+            pointer-events: none;
             display flex
             flex-direction column
             width 100%
@@ -100,11 +104,13 @@
                     background-position left center
                     cursor pointer
         .add-contact
+            pointer-events: none;
             border-radius 99px
             font-size 18px
             line-height 35px
             width 220px
         .invitation
+            pointer-events: none;
             display flex
             flex-direction column
             justify-content center
@@ -118,6 +124,7 @@
                 .action-btn
                     width 90%
         .messages
+            pointer-events: none;
             height 100%
             width 45%
             margin-left -40px
@@ -134,7 +141,6 @@
                 word-break break-all
             .self
                 background-color #adfcff
-                color white
                 align-self flex-end
             .other-chat
                 display flex
@@ -142,6 +148,7 @@
                     background-color #f1f0f0
                     margin-left 10px
         .input
+            pointer-events: none;
             display table
             width 40%
             height 40px

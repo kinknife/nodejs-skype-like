@@ -1,8 +1,10 @@
 const io = require('socket.io-client');
+const ss = require('socket.io-stream');
 
 class Connections {
     constructor() {
         this.chatCb = null;
+        this.queue = [];
         let socket;
         if(process.env.REACT_APP_ENV !== "production") {
             socket = io(':4200/');
@@ -16,6 +18,10 @@ class Connections {
             this.socket = socket;
             this.socket.on('updateChats', (data) => {
                 this.chatCb(data);
+            });
+            this.socket.on('uploadSucceed', (data) => {
+                console.log(data);
+                this.queue = this.queue.slice(1);
             });
         });
     }
@@ -51,6 +57,26 @@ class Connections {
 
     acceptRequest(userId, acceptedId) {
         this.socket.emit('accept', {userId, acceptedId});
+    }
+
+    uploadFile(file, path) {
+        if(this.queue.length !== 0) {
+            if(file.constructor === Array) {
+                this.queue.concat(file);
+            } else {
+                this.queue.push(file);
+            }
+            return;
+        }
+        let uploadFile = file[0];
+        if(file.length > 1) {
+            this.queue = Array.prototype.slice.call(file).slice(1);
+        } else {
+            this.queue.push(file[0]);
+        }
+        let stream = ss.createStream();
+        ss(this.socket).emit('upload', stream, {size: uploadFile.size, name: uploadFile.name, path: path});
+        ss.createBlobReadStream(uploadFile).pipe(stream);
     }
 };
 

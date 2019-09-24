@@ -5,6 +5,7 @@ import {connections} from '../services/connections';
 const {name} = require('redux-atomic-action');
 const utils = require('../services/utils');
 const cx = require('classnames');
+const DragDropOverlay = require('./DragDropOverlay.jsx');
 
 class ChatPage extends React.Component {
 
@@ -14,16 +15,20 @@ class ChatPage extends React.Component {
             chat: {},
             chatUser: {}
         };
-
+        this.overlay = React.createRef();
     }
-
-    componentWillMount() {
+    
+    UNSAFE_componentWillMount() {
         let chatUser = this.props.chatUser || this.props.user.pending.find(el => el._id === chatUser.chatRef);
         let chat = this.props.user.chats.find(el => {return el._id = chatUser._id});
         this.setState({
             chat: chat,
             chatUser: chatUser
         });
+    }
+
+    handleDragEnter() {
+        this.overlay.current.classList.remove('hidden');
     }
 
     submitMsg(e) {
@@ -149,15 +154,15 @@ class ChatPage extends React.Component {
     }
 
     getMessages() {
-        let messages = this.state.chat.messages.map(el => {
+        let messages = this.state.chat.messages.map((el, index) => {
             let selfMessage = el.from === this.props.user._id;
             if(selfMessage) {
                 return(
-                    <div className='chat self'>{el.content}</div>
+                    <div className='chat self' key={index}>{el.content}</div>
                 );
             } else {
                 return(
-                    <div className='other-chat'>
+                    <div className='other-chat' key={index}>
                         <div className='profile-pic'></div>
                         <div className="chat other">{el.content}</div>
                     </div>
@@ -188,7 +193,7 @@ class ChatPage extends React.Component {
                         <button className="chat-ctl-btn add-to-group"></button>
                     </div>
                 </div>
-                <div className="chat-box">
+                <div className="chat-box" onDragEnter={() => {this.handleDragEnter()}}>
                     {this.getChats()}
                     <div className="messages">
                         {this.getMessages()}
@@ -197,6 +202,7 @@ class ChatPage extends React.Component {
                         <div placeholder="Type your message here" ref={(messInput) => {this.messInput = messInput}} onChange={(e) => {this.autoResize(e)}} contentEditable="true" onKeyDown={(e) => {this.submitMsg(e)}}></div>
                         {this.getMessBtnControl()}
                     </div>
+                    <DragDropOverlay ref={this.overlay} chatId={this.state.chat.id}/>
                 </div>
             </div>
         );

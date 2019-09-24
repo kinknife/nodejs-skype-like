@@ -15,13 +15,21 @@ const utils = require('../services/utils');
 
 class App extends React.Component {
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if(nextProps.mapping) {
             connections.sendMapping(this.props.user._id);
         }
     }
 
     componentDidMount() {
+        document.addEventListener('dragover', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+        });
+        document.addEventListener('drop', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+        });
         connections.updateChatCb(this.updateChat.bind(this));
         let token = utils.getCookie('token');
         if(token) {
