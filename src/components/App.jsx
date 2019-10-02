@@ -71,8 +71,8 @@ class App extends React.Component {
             let updateChat = user.chats.find(el => el.id === chat.id);
             if(updateChat) {
                 if(chat.type === "update") {
-                    for(let each of chats.messages) {
-                        let updateMess = updateChat.find(el => el.timeCreate === each.timeCreate);
+                    for(let each of chat.messages) {
+                        let updateMess = updateChat.messages.find(el => el.timeCreate === each.timeCreate);
                         updateMess = each;
                     }
                 } else if (chat.type === 'new') {
@@ -95,9 +95,6 @@ class App extends React.Component {
                 }
                 let user = Object.assign({}, this.props.user);
                 user.chats.push(newChat);
-                this.setState({
-                    user: user
-                });
             }
         }
         this.props.dispatch(name(utils.assignFunc({user: user})));

@@ -156,3 +156,59 @@ input:-webkit-autofill
 
 .hidden
     display none !important
+
+.progress-bar
+    width  40px
+    height 40px
+    margin-right 10px
+    background-color #d6dadc
+    border-radius 50%
+    position relative
+    .mask, .fill, .shadow 
+        width    40px
+        height   40px
+        position absolute
+        border-radius 50%                    
+    .mask 
+        clip rect(0px, 40px, 40px, 40/2px)
+        .fill 
+            clip rect(0px, 40/2px, 40px, 0px)
+            background-color #97a71d
+    .inset 
+        width       30px
+        height      30px
+        position    absolute
+        background-color #adfcff
+        border-radius 50%
+        top 5px
+        left 5px
+        text-align center
+        line-height 30px
+        white-space nowrap
+        font-size 14px
+
+.progress-circle 
+  height 60px
+  position absolute
+  width 60px
+
+  &__svg 
+    border-radius 50%
+    height 100%
+    transform scaleX(-1) rotate(-90deg)
+    width 100%
+  
+
+  &__stroke 
+    fill none
+    stroke-width 10px
+  
+    &:nth-child(1) 
+      stroke #31c903
+    
+    
+    &:nth-child(2) 
+      stroke #f3f5f6
+      stroke-dasharray 314.1592%
+    
+  

@@ -24,7 +24,7 @@ class SideBarContent extends React.Component {
                 if(!user) {
                     user = this.props.user.pendings.find(pendings =>  pendings._id.toString() === el.chatRef);
                 }
-                lastMessage = el.messages[el.messages.length - 1].content;
+                lastMessage = this.getLastMess(el.messages[el.messages.length - 1]);
             }
             let nameArray = user.name.split(' ');
             let nameCharacter = nameArray[nameArray.length - 1][0];
@@ -43,6 +43,12 @@ class SideBarContent extends React.Component {
             );
         });
         return chats;
+    }
+
+    getLastMess(el) {
+        if(el.type === 'text') {
+            return el.content;
+        }
     }
 
     selectCard(index, user) {

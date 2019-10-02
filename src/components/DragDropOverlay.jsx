@@ -1,4 +1,5 @@
 const React = require('react');
+const {connect} = require('react-redux');
 const {connections} = require('../services/connections');
 
 class DragDropOverlay extends React.Component {
@@ -22,7 +23,9 @@ class DragDropOverlay extends React.Component {
     handleDropFile(e) {
         let files = e.target.files || e.dataTransfer.files;
         e.preventDefault();
-        connections.uploadFile(files, this.props.chatId);
+        let toId = this.props.chat.chatRef;
+
+        connections.uploadFile(files, this.props.chat.id, toId, this.props.user._id);
         this.props.childRef.current.classList.add('hidden');
     }
 
@@ -36,4 +39,5 @@ class DragDropOverlay extends React.Component {
     }
 }
 
+DragDropOverlay = connect(state => state, null, null)(DragDropOverlay);
 module.exports = React.forwardRef((props, ref) => <DragDropOverlay {...props} childRef={ref} />);

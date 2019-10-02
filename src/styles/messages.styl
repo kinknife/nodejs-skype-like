@@ -1,0 +1,98 @@
+.messages
+    display flex
+    flex-direction column
+    justify-content flex-end
+    min-height 100%
+    width 45%
+    margin 0 auto
+    .chat
+        margin 1px 0
+        border-radius 20px
+        max-width 50%
+        font-size 16px
+        padding 10px 15px
+        display inline-block
+        word-break break-all
+        text-align left
+    .self
+        background-color #adfcff
+        width fit-content
+        align-self flex-end
+    .other-chat
+        display flex
+        .other
+            background-color #f1f0f0
+            margin-left 10px
+    .file-chat
+        display flex
+        .file-name
+            max-width 300px
+            overflow hidden
+            text-overflow ellipsis
+            white-space nowrap
+        .file-icon
+            width 40px
+            background-image url('./assets/file-icon.svg')
+            background-size 80%
+            background-repeat no-repeat
+            background-position center
+            margin-right 5px
+        .progress-circle
+            height 40px
+            width 40px
+            position relative
+            margin-right 10px
+    .media-container
+        display flex
+        justify-content center
+        align-items center
+        min-width 100px
+        min-height 100px
+        position relative
+        .progress-bar
+            position absolute
+        .stop-upload
+            position absolute
+            font-size 50px
+            color white
+            height 80px
+    img
+        min-width 100px
+        max-width 100%
+        cursor pointer
+    video
+        min-width 100px
+        max-width 100%
+
+.img-overlay
+    display flex
+    position absolute
+    align-items center
+    justify-content center
+    height 100%
+    width 100%
+    top 0
+    left 0
+    background-color rgba(0, 0, 0, 0.3)
+    .close-btn
+        position absolute
+        top 10px
+        right 15px
+        font-size 30px
+        cursor pointer
+        color white
+    img
+        max-width 60%
+        height 75%
+        animation-name: zoom;
+        animation-duration: 1s;
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}

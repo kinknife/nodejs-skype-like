@@ -6,6 +6,7 @@ const {name} = require('redux-atomic-action');
 const utils = require('../services/utils');
 const cx = require('classnames');
 const DragDropOverlay = require('./DragDropOverlay.jsx');
+const Messages = require('./Messages.jsx');
 
 class ChatPage extends React.Component {
 
@@ -25,6 +26,12 @@ class ChatPage extends React.Component {
             chat: chat,
             chatUser: chatUser
         });
+    }
+
+    componentDidMount() {
+        // setTimeout(() => {
+            this.messagesEnd.scrollIntoView();
+        // }, 100);
     }
 
     handleDragEnter() {
@@ -153,25 +160,6 @@ class ChatPage extends React.Component {
         }
     }
 
-    getMessages() {
-        let messages = this.state.chat.messages.map((el, index) => {
-            let selfMessage = el.from === this.props.user._id;
-            if(selfMessage) {
-                return(
-                    <div className='chat self' key={index}>{el.content}</div>
-                );
-            } else {
-                return(
-                    <div className='other-chat' key={index}>
-                        <div className='profile-pic'></div>
-                        <div className="chat other">{el.content}</div>
-                    </div>
-                )
-            }
-        });
-        return messages;
-    }
-
     render() {
         let isFriend = this.props.user.friends.some((el) => el._id === this.state.chatUser._id);
         return(
@@ -195,14 +183,16 @@ class ChatPage extends React.Component {
                 </div>
                 <div className="chat-box" onDragEnter={() => {this.handleDragEnter()}}>
                     {this.getChats()}
-                    <div className="messages">
-                        {this.getMessages()}
+                    <div className="messages-container">
+                        <Messages messages={this.state.chat.messages} user={this.props.user}/>
+                        <div className='dummy' ref={(el) => { this.messagesEnd = el; }}>
+                        </div>
                     </div>
                     <div className="input" ref={(inputContainer) => {this.inputContainer = inputContainer}}>
                         <div placeholder="Type your message here" ref={(messInput) => {this.messInput = messInput}} onChange={(e) => {this.autoResize(e)}} contentEditable="true" onKeyDown={(e) => {this.submitMsg(e)}}></div>
                         {this.getMessBtnControl()}
                     </div>
-                    <DragDropOverlay ref={this.overlay} chatId={this.state.chat.id}/>
+                    <DragDropOverlay ref={this.overlay} chat={this.state.chat}/>
                 </div>
             </div>
         );
